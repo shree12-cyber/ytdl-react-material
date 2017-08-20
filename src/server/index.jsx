@@ -1,4 +1,5 @@
 import express from 'express';
+import socketio from 'socket.io';
 
 const app = express();
 
@@ -13,4 +14,11 @@ app.get('*', (req, res) => {
     body: 'Loading...',
   });
 });
-app.listen(3000);
+const server = app.listen(3000);
+
+const io = socketio(server);
+io.on('connection', (socket) => {
+  socket.on('id', (id) => {
+    console.log(id);
+  });
+});

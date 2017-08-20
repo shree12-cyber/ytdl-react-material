@@ -1,4 +1,5 @@
 import React from 'react';
+import socket from '../index';
 import Form from './form/Form';
 import Loader from './Loader';
 import TitleHeader from './TitleHeader';
@@ -23,10 +24,10 @@ export default class Main extends React.Component {
   }
 
   handleId(id) {
-    console.log(id);
     this.setState({
       isLoading: true,
     });
+    socket.emit('id', id);
   }
 
   render() {
