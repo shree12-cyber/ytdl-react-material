@@ -1,7 +1,4 @@
 import express from 'express';
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import App from '../client/components/App';
 
 const app = express();
 
@@ -13,7 +10,7 @@ app.get('*', (req, res) => {
   res.render('index', {
     title: 'YouTube Downloader',
     author: 'burnO',
-    body: renderToString(<App />),
+    body: 'Loading...',
   });
 });
 app.listen(3000);
