@@ -16,7 +16,7 @@ export default function DownloadButton({ callback }) {
       style={style}
       onClick={() => callback()}
     >
-      Pobierz
+      Download
     </Button>
   );
 }
