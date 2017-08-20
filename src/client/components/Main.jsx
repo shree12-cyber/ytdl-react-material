@@ -3,6 +3,7 @@ import socket from '../index';
 import Form from './form/Form';
 import Loader from './Loader';
 import TitleHeader from './TitleHeader';
+import { SocketEvents } from '../../constants';
 
 const style = {
   display: 'flex',
@@ -21,13 +22,16 @@ export default class Main extends React.Component {
       errorMessage: null,
     };
     this.handleId = this.handleId.bind(this);
+    socket.on(SocketEvents.INFO, (videoInfo) => {
+      console.log(videoInfo);
+    });
   }
 
   handleId(id) {
     this.setState({
       isLoading: true,
     });
-    socket.emit('id', id);
+    socket.emit(SocketEvents.ID, id);
   }
 
   render() {

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DownloadButton from './DownloadButton';
 import DownloadField from './DownloadField';
-import { UrlParts, ErrorMessages } from '../../constants';
+import { UrlParts } from '../../../constants';
 
 const style = {
   display: 'flex',
@@ -29,7 +29,7 @@ export default class Form extends React.Component {
     } else {
       this.setState(previousState => ({
         url: previousState.url,
-        errorMessage: ErrorMessages.INVALID_URL,
+        errorMessage: 'Invalid url',
       }));
     }
   }
