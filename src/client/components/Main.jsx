@@ -4,6 +4,7 @@ import Form from './form/Form';
 import Loader from './Loader';
 import TitleHeader from './TitleHeader';
 import { SocketEvents } from '../../constants';
+import LinkList from './list/LinkList';
 
 const style = {
   display: 'flex',
@@ -20,10 +21,16 @@ export default class Main extends React.Component {
     this.state = {
       isLoading: false,
       errorMessage: null,
+      linkInfoList: null,
     };
     this.handleId = this.handleId.bind(this);
     socket.on(SocketEvents.INFO, (videoInfo) => {
-      console.log(videoInfo);
+      console.log(videoInfo.linkInfoList);
+      this.setState({
+        isLoading: false,
+        errorMessage: null,
+        linkInfoList: videoInfo.formats,
+      });
     });
   }
 
@@ -40,7 +47,10 @@ export default class Main extends React.Component {
         <TitleHeader />
         {this.state.isLoading ?
           <Loader /> :
-          <Form onIdSubmitted={this.handleId} errorMessage={this.state.errorMessage} />
+          <div>
+            <Form onIdSubmitted={this.handleId} errorMessage={this.state.errorMessage} />
+            {this.state.linkInfoList ? <LinkList linkInfoList={this.state.linkInfoList} /> : null}
+          </div>
         }
       </div>
     );

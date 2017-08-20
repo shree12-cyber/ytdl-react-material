@@ -2,3 +2,6 @@ html {
     font-family: 'Roboto', sans-serif;
 }
 
+div {
+    width: 100%;
+}
