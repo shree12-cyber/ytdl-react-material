@@ -1,0 +1,14 @@
+{
+  "presets": ["react", "env"],
+  "plugins": [
+    [
+      "direct-import",
+      [
+        {
+          "name": "material-ui",
+          "indexFile": "material-ui/index.es"
+        }
+      ]
+    ]
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "youtube-dl-react-material",
+  "version": "0.1.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "run-s build run",
+    "run": "node src/app.js",
+    "build": "webpack",
+    "dev": "run-p dev:watch dev:run",
+    "dev:watch": "webpack -d -w --config webpack.config.client.babel.js",
+    "dev:run": "nodemon --exec babel-node src/server/index.jsx",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "burno",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.4",
+    "hbs": "^4.0.1",
+    "material-ui": "^1.0.0-beta.5",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-router-dom": "^4.1.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-direct-import": "^0.2.0",
+    "babel-plugin-transform-es3-member-expression-literals": "^6.22.0",
+    "babel-plugin-transform-es3-property-literals": "^6.22.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "nodemon": "^1.11.0",
+    "npm-run-all": "^4.0.2",
+    "webpack": "^3.5.5",
+    "webpack-node-externals": "^1.6.0"
+  }
+}
