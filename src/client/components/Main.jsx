@@ -6,13 +6,19 @@ import TitleHeader from './TitleHeader';
 import { SocketEvents } from '../../constants';
 import LinkList from './list/LinkList';
 
-const style = {
+const containerStyle = {
   display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
   height: '100%',
   flexDirection: 'column',
   textAlign: 'center',
+};
+
+const styleTop = {
+  marginTop: 'auto',
+};
+
+const styleBottom = {
+  marginBottom: 'auto',
 };
 
 export default class Main extends React.Component {
@@ -43,15 +49,19 @@ export default class Main extends React.Component {
 
   render() {
     return (
-      <div style={style}>
-        <TitleHeader />
-        {this.state.isLoading ?
-          <Loader /> :
-          <div>
-            <Form onIdSubmitted={this.handleId} errorMessage={this.state.errorMessage} />
-            {this.state.linkInfoList && <LinkList linkInfoList={this.state.linkInfoList} />}
-          </div>
-        }
+      <div style={containerStyle}>
+        <div style={styleTop}>
+          <TitleHeader />
+        </div>
+        <div style={styleBottom}>
+          {this.state.isLoading ?
+            <Loader /> :
+            <div>
+              <Form onIdSubmitted={this.handleId} errorMessage={this.state.errorMessage} />
+              {this.state.linkInfoList && <LinkList linkInfoList={this.state.linkInfoList} />}
+            </div>
+          }
+        </div>
       </div>
     );
   }
