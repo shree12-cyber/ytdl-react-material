@@ -5,8 +5,8 @@
   "main": "src/app.js",
   "scripts": {
     "start": "run-s build run",
-    "run": "node src/app.js",
     "build": "webpack",
+    "run": "node src/app.js",
     "dev": "run-p dev:watch dev:run",
     "dev:watch": "webpack -d -w --config webpack.config.client.babel.js",
     "dev:run": "nodemon --exec babel-node src/server/index.jsx",

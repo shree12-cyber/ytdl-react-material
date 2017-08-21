@@ -24,7 +24,7 @@ export default function LinkList({ linkInfoList }) {
       <Grid container>
         {linkInfoList
           .sort(sortQualities)
-          .map(linkInfo => <LinkItem key={linkInfo.s} linkInfo={linkInfo} />)}
+          .map(linkInfo => <LinkItem key={linkInfo.itag} linkInfo={linkInfo} />)}
       </Grid>
     </div>
   );
