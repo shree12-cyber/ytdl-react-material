@@ -1,6 +1,8 @@
 import React from 'react';
 import { Grid } from 'material-ui';
+import PropTypes from 'prop-types';
 import LinkItem from './LinkItem';
+import LinkItemProps from '../props/LinkItemProps';
 
 const style = {
   maxWidth: '700px',
@@ -29,3 +31,7 @@ export default function LinkList({ linkInfoList }) {
     </div>
   );
 }
+
+LinkList.propTypes = {
+  linkInfoList: PropTypes.arrayOf(LinkItemProps).isRequired,
+};

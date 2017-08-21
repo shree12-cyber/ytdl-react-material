@@ -25,7 +25,7 @@ export default class Main extends React.Component {
     };
     this.handleId = this.handleId.bind(this);
     socket.on(SocketEvents.INFO, (videoInfo) => {
-      console.log(videoInfo.linkInfoList);
+      console.log(videoInfo.formats);
       this.setState({
         isLoading: false,
         errorMessage: null,
@@ -49,7 +49,7 @@ export default class Main extends React.Component {
           <Loader /> :
           <div>
             <Form onIdSubmitted={this.handleId} errorMessage={this.state.errorMessage} />
-            {this.state.linkInfoList ? <LinkList linkInfoList={this.state.linkInfoList} /> : null}
+            {this.state.linkInfoList && <LinkList linkInfoList={this.state.linkInfoList} />}
           </div>
         }
       </div>
