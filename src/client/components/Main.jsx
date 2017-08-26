@@ -27,15 +27,18 @@ export default class Main extends React.Component {
     this.state = {
       isLoading: false,
       errorMessage: null,
-      linkInfoList: null,
+      audioVideoInfoList: null,
+      videoInfoList: null,
+      audioInfoList: null,
     };
     this.handleId = this.handleId.bind(this);
     socket.on(SocketEvents.INFO, (videoInfo) => {
-      console.log(videoInfo.formats);
       this.setState({
         isLoading: false,
         errorMessage: null,
-        linkInfoList: videoInfo.formats,
+        audioVideoInfoList: videoInfo.formats.filter(info => info.resolution && info.audioBitrate),
+        videoInfoList: videoInfo.formats.filter(info => info.resolution && !info.audioBitrate),
+        audioInfoList: videoInfo.formats.filter(info => !info.resolution && info.audioBitrate),
       });
     });
   }
@@ -58,7 +61,18 @@ export default class Main extends React.Component {
             <Loader /> :
             <div>
               <Form onIdSubmitted={this.handleId} errorMessage={this.state.errorMessage} />
-              {this.state.linkInfoList && <LinkList linkInfoList={this.state.linkInfoList} />}
+              {this.state.audioVideoInfoList && <LinkList
+                listHeader="Video & audio:"
+                linkInfoList={this.state.audioVideoInfoList}
+              />}
+              {this.state.videoInfoList && <LinkList
+                listHeader="Video only:"
+                linkInfoList={this.state.videoInfoList}
+              />}
+              {this.state.audioInfoList && <LinkList
+                listHeader="Audio only:"
+                linkInfoList={this.state.audioInfoList}
+              />}
             </div>
           }
         </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from 'material-ui';
+import { Grid, Typography } from 'material-ui';
 import PropTypes from 'prop-types';
 import LinkItem from './LinkItem';
 import LinkItemProps from '../props/LinkItemProps';
@@ -20,15 +20,16 @@ const sortVideoList = (linkInfo1, linkInfo2) => {
 };
 
 const style = {
-  maxWidth: '700px',
+  maxWidth: '800px',
   marginLeft: 'auto',
   marginRight: 'auto',
   paddingTop: '20px',
 };
 
-export default function LinkList({ linkInfoList }) {
+export default function LinkList({ linkInfoList, listHeader }) {
   return (
     <div style={style}>
+      <Typography type="title" gutterBottom>{listHeader}</Typography>
       <Grid container>
         {linkInfoList
           .filter(linkInfo => linkInfo.container)
@@ -41,4 +42,5 @@ export default function LinkList({ linkInfoList }) {
 
 LinkList.propTypes = {
   linkInfoList: PropTypes.arrayOf(LinkItemProps).isRequired,
+  listHeader: PropTypes.string.isRequired,
 };
