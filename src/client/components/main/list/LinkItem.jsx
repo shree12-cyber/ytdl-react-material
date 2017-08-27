@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Paper } from 'material-ui';
 import FileDownload from 'material-ui-icons/FileDownload';
 import LinkItemProps from '../props/LinkItemProps';
+import { supportsDownloadAttribute } from '../../../index';
 
 const paperStyle = {
   paddingTop: '12px',
@@ -15,9 +16,17 @@ const linkStyle = {
 export default function LinkItem({ linkInfo }) {
   const resolutionText = <span><br />{linkInfo.resolution}</span>;
   const bitrateText = <span><br />{linkInfo.audioBitrate}bps</span>;
+  const onClick = (event) => {
+    if (supportsDownloadAttribute()) {
+      return true;
+    }
+    alert('To download a video right click on a format and choose "save element as"');
+    event.preventDefault();
+    return false;
+  };
   return (
     <Grid item xs={4} sm={2}>
-      <a style={linkStyle} href={linkInfo.url} download>
+      <a style={linkStyle} href={linkInfo.url} download onClick={onClick}>
         <Paper style={paperStyle}>
           {linkInfo.container}
           {linkInfo.resolution && resolutionText}

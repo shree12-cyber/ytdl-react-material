@@ -1,5 +1,5 @@
 import React from 'react';
-import socket from '../../index';
+import { socket } from '../../index';
 import Form from './form/DownloadForm';
 import Loader from './Loader';
 import TitleHeader from './TitleHeader';

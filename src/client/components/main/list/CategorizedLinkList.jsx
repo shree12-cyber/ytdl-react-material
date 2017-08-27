@@ -2,12 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LinkList from './LinkGrid';
 import LinkItemProps from '../props/LinkItemProps';
+import { supportsDownloadAttribute } from '../../../index';
+import BrowserInfo from './BrowserInfo';
 
 export default function MultiLinkList({ formats }) {
   const audioVideoFormats = formats.filter(info => info.resolution && info.audioBitrate);
   const videoFormats = formats.filter(info => info.resolution && !info.audioBitrate);
   const audioFormats = formats.filter(info => !info.resolution && info.audioBitrate);
   return (<div>
+    {!supportsDownloadAttribute() && <BrowserInfo />}
     {audioVideoFormats && <LinkList
       header="Video & audio:"
       formats={audioVideoFormats}
