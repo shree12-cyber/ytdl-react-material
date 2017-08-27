@@ -1,6 +1,9 @@
 import React from 'react';
 import { CircularProgress } from 'material-ui/Progress';
+import { isSupportingLoader } from '../../index';
 
 export default function Loader() {
-  return <CircularProgress size={50} />;
+  return isSupportingLoader() ?
+    <CircularProgress size={50} /> :
+    <p>Loading...</p>;
 }
