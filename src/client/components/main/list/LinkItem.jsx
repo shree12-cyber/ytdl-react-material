@@ -20,8 +20,8 @@ export default function LinkItem({ linkInfo }) {
     if (isSupportingDownloadAttribute()) {
       return true;
     }
-    window.alert('To download a video right click on a format and choose "save element as"');
     event.preventDefault();
+    window.alert('To download a video right click on a format and choose "save element as"');
     return false;
   };
   return (

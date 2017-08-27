@@ -29,7 +29,7 @@ export default class Form extends React.Component {
     } else {
       this.setState(previousState => ({
         url: previousState.url,
-        errorMessage: 'Invalid url',
+        errorMessage: 'Invalid URL',
       }));
     }
   }
