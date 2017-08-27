@@ -1,5 +1,8 @@
 {
-  "presets": ["react", "env"],
+  "presets": [
+    "react",
+    "env"
+  ],
   "plugins": [
     [
       "direct-import",
@@ -9,6 +12,14 @@
           "indexFile": "material-ui/index.es"
         }
       ]
+    ],
+    [
+      "transform-runtime",
+      {
+        "helpers": false,
+        "polyfill": false,
+        "regenerator": true
+      }
     ]
   ]
 }
