@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React from 'react';
 import { Grid, Paper } from 'material-ui';
 import FileDownload from 'material-ui-icons/FileDownload';

@@ -1,6 +1,6 @@
 import express from 'express';
 import socketio from 'socket.io';
-import handleId from './yt';
+import ytdl from 'ytdl-core';
 import { SocketEvents } from '../constants';
 
 const app = express();
@@ -21,9 +21,8 @@ const server = app.listen(3000);
 const io = socketio(server);
 io.on('connection', (socket) => {
   socket.on(SocketEvents.ID, (id) => {
-    handleId(id).then((videoInfo) => {
-      socket.emit(SocketEvents.INFO, videoInfo);
-    });
+    ytdl
+      .getInfo(`https://www.youtube.com/watch?v=${id}`)
+      .then(videoInfo => socket.emit(SocketEvents.INFO, videoInfo));
   });
-})
-;
+});
