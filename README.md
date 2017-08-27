@@ -6,7 +6,7 @@ I wanted to learn React from the scratch, so I've decided to create this ;)
 ## Installation
 ```bash
 clone git@github.com:burnoo/ytdl-react-material.git
-cd youtube-dl-react-material
+cd ytdl-react-material
 npm install
 npm start
 ```
