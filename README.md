@@ -1,11 +1,11 @@
-# youtube-dl-react-material
+# ytdl-react-material
 Youtube downloader website written in JS.
 
 I wanted to learn React from the scratch, so I've decided to create this ;)
 
 ## Installation
 ```bash
-clone git@github.com:burnoo/youtube-dl-react-material.git
+clone git@github.com:burnoo/ytdl-react-material.git
 cd youtube-dl-react-material
 npm install
 npm start
