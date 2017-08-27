@@ -1,10 +1,10 @@
 import React from 'react';
-import socket from '../index';
-import Form from './form/Form';
+import socket from '../../index';
+import Form from './form/DownloadForm';
 import Loader from './Loader';
 import TitleHeader from './TitleHeader';
-import { SocketEvents } from '../../constants';
-import LinkList from './list/LinkList';
+import { SocketEvents } from '../../../constants';
+import MultiLinkList from './list/CategorizedLinkList';
 
 const containerStyle = {
   display: 'flex',
@@ -24,21 +24,25 @@ const styleBottom = {
 export default class Main extends React.Component {
   constructor() {
     super();
+    this.setUpState();
+    this.setUpSocket();
+    this.handleId = this.handleId.bind(this);
+  }
+
+  setUpState() {
     this.state = {
       isLoading: false,
       errorMessage: null,
-      audioVideoInfoList: null,
-      videoInfoList: null,
-      audioInfoList: null,
+      formats: null,
     };
-    this.handleId = this.handleId.bind(this);
+  }
+
+  setUpSocket() {
     socket.on(SocketEvents.INFO, (videoInfo) => {
       this.setState({
         isLoading: false,
         errorMessage: null,
-        audioVideoInfoList: videoInfo.formats.filter(info => info.resolution && info.audioBitrate),
-        videoInfoList: videoInfo.formats.filter(info => info.resolution && !info.audioBitrate),
-        audioInfoList: videoInfo.formats.filter(info => !info.resolution && info.audioBitrate),
+        formats: videoInfo.formats,
       });
     });
   }
@@ -61,18 +65,7 @@ export default class Main extends React.Component {
             <Loader /> :
             <div>
               <Form onIdSubmitted={this.handleId} errorMessage={this.state.errorMessage} />
-              {this.state.audioVideoInfoList && <LinkList
-                listHeader="Video & audio:"
-                linkInfoList={this.state.audioVideoInfoList}
-              />}
-              {this.state.videoInfoList && <LinkList
-                listHeader="Video only:"
-                linkInfoList={this.state.videoInfoList}
-              />}
-              {this.state.audioInfoList && <LinkList
-                listHeader="Audio only:"
-                linkInfoList={this.state.audioInfoList}
-              />}
+              {this.state.formats && <MultiLinkList formats={this.state.formats} />}
             </div>
           }
         </div>

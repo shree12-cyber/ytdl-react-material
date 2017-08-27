@@ -26,12 +26,12 @@ const style = {
   paddingTop: '20px',
 };
 
-export default function LinkList({ linkInfoList, listHeader }) {
+export default function LinkList({ formats, header }) {
   return (
     <div style={style}>
-      <Typography type="title" gutterBottom>{listHeader}</Typography>
+      <Typography type="title" gutterBottom>{header}</Typography>
       <Grid container>
-        {linkInfoList
+        {formats
           .filter(linkInfo => linkInfo.container)
           .sort(sortVideoList)
           .map(linkInfo => <LinkItem key={linkInfo.itag} linkInfo={linkInfo} />)}
@@ -41,6 +41,6 @@ export default function LinkList({ linkInfoList, listHeader }) {
 }
 
 LinkList.propTypes = {
-  linkInfoList: PropTypes.arrayOf(LinkItemProps).isRequired,
-  listHeader: PropTypes.string.isRequired,
+  formats: PropTypes.arrayOf(LinkItemProps).isRequired,
+  header: PropTypes.string.isRequired,
 };

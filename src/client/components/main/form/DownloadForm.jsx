@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DownloadButton from './DownloadButton';
 import DownloadField from './DownloadField';
-import { UrlParts } from '../../../constants';
+import { UrlParts } from '../../../../constants';
 
 const style = {
   display: 'flex',
@@ -15,7 +15,7 @@ export default class Form extends React.Component {
   constructor(props) {
     super();
     this.state = {
-      url: '',
+      url: null,
       errorMessage: props.errorMessage,
     };
     this.updateState = this.updateState.bind(this);
