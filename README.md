@@ -10,6 +10,7 @@ cd ytdl-react-material
 npm install
 npm start
 ```
+By default server is running on `localhost:3000`
 
 ## Used libraries/tools
 * [React](https://facebook.github.io/react/)
