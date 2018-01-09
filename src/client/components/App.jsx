@@ -1,6 +1,6 @@
 import React from 'react';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
-import createPalette from 'material-ui/styles/palette';
+import createPalette from 'material-ui/styles/createPalette';
 import { deepPurple } from 'material-ui/colors';
 import Main from './main/Main';
 
