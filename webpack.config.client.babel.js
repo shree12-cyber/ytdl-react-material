@@ -1,5 +1,6 @@
 import path from 'path';
 
+
 const client = {
   entry: './src/client/index.jsx',
   output: {

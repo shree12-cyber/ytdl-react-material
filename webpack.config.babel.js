@@ -1,4 +1,13 @@
-import client from './webpack.config.client.babel';
-import server from './webpack.config.server.babel';
+const path = require('path');
 
-module.exports = [client, server];
+module.exports = {
+  entry: {
+    client: './src/client/index.jsx',
+    server: './src/server/index.jsx'
+  },
+  output: {
+    filename: '[name].js', // Generates client.js and server.js
+    path: path.resolve(__dirname, 'dist'),
+  },
+  // Add other configurations here
+};
